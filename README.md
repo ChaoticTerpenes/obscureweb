@@ -36,7 +36,7 @@
     - `Download` - This will download the requisite `xxx.ovpn` file.
     - `Revoke` - This will revoke VPN access for that user.
 ![VPN Issue Interface](images/vpnclientdownload.png)
-# Windows with WSL-Kali-Kex `https://www.kali.org/docs/wsl/win-kex/`
+# Windows with WSL-Kali-Kex [https://www.kali.org/docs/wsl/win-kex/]
 - Login
     - RDP Access: `<name>#.domain.com`
     - Credentials in `.tfvars`
@@ -45,6 +45,6 @@
 ![Student User Interface](images/studentwithkali.png)
 # Issues / Thoughts / To-Dos
 - When the scripts run cloudflare creates a `<name>.domain.com` A record, however the overwrite flag in the terraform code doesn't seem to delete the existing record and just adds a new one.
-    - Manually deleting would be a pain, esp if there was 20 records created.
-    - Need a delete CF record script ./delcf sub.domain.com or find another tf way because `allow_overwrite  = true` doesn't work.
+- Manually deleting would be a pain, esp if there was 20 records created.
+- Need a delete CF record script ./delcf sub.domain.com or find another tf way because `allow_overwrite  = true` doesn't work.
 - automatically have the atk box runing the vuln services
