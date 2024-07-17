@@ -20,26 +20,26 @@
 	- I did make some updates and only verified the powershell script. This may have errors properly generating the student in an appropriate format.
 # Deployment
 - Running the below commands will deploy a VPN server, a Windows 11 host(s), and an internal Ubuntu 22.04 box.
-    - terraform init
-    - terraform plan
-    - terraform apply --auto-approve
+	- terraform init
+	- terraform plan
+	- terraform apply --auto-approve
 ## Deploying the internal web vulnerable apps
 - ssh with `ansible@vpn.domain.com`
 - From the home directory choose the vulnerable web app to deploy
-    - `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
+	- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
 # Issuing .ovpn files (If necessary)
 - Log into the VPN server
- - `https://vpn.domain.com/index.sh`
- - Use the credentials listed in .tfvars
+	- `https://vpn.domain.com/index.sh`
+	- Use the credentials listed in .tfvars
 ![Basic Auth for VPN Login](images/vpnserveraccess.png)
- - Enter a name and click submit
-    - `Download` - This will download the requisite `xxx.ovpn` file.
-    - `Revoke` - This will revoke VPN access for that user.
+- Enter a name and click submit
+	- `Download` - This will download the requisite `xxx.ovpn` file.
+	- `Revoke` - This will revoke VPN access for that user.
 ![VPN Issue Interface](images/vpnclientdownload.png)
 # Windows with WSL-Kali-Kex [https://www.kali.org/docs/wsl/win-kex/]
 - Login
-    - RDP Access: `<name>#.domain.com`
-    - Credentials in `.tfvars`
+	- RDP Access: `<name>#.domain.com`
+	- Credentials in `.tfvars`
 - Upon login you'll be greeted with a WSL Kali window
 	- In this window run `kex` to launch a VNC window with Kali (Will take about 30 seconds to fully load)
 ![Student User Interface](images/studentwithkali.png)
