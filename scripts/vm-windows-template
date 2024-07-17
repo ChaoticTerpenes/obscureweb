@@ -1,0 +1,59 @@
+﻿resource "azurerm_managed_disk" "copydisk" {
+  name = "${var.student}-${random_id.randomId.hex}-OS-Disk"
+  location = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
+  resource_group_name = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
+  storage_account_type = "Standard_LRS"
+  create_option = "Copy"
+  source_resource_id = "/subscriptions/17e88924-60dc-4724-a029-23ac9f7e0fb0/resourceGroups/ObscureWeb-images/providers/Microsoft.Compute/disks/obscure_web_student"
+  disk_size_gb = "128"
+}
+
+resource "azurerm_virtual_machine" "studentwindows" {
+  name                  = "${var.student}"
+  location              = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
+  resource_group_name   = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
+  network_interface_ids = ["${azurerm_network_interface.studentIP.id}"]
+  vm_size                  = "${var.windows11_vmsize}"
+
+  storage_os_disk {
+    name                 = "${azurerm_managed_disk.copydisk.name}"
+    managed_disk_id      = "${azurerm_managed_disk.copydisk.id}"
+    create_option        = "Attach"
+    os_type              = "Windows"
+  }
+}
+
+resource "azurerm_public_ip" "Windows_PublicIP" {
+  name                = "${var.student}-${random_id.randomId.hex}-PublicIP"
+  resource_group_name = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
+  location            = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
+  allocation_method   = "Static"
+}
+
+resource "azurerm_network_interface" "studentIP" {
+  name                      = "${var.student}-${random_id.randomId.hex}-Nic"
+  location                  = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
+  resource_group_name       = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
+
+  ip_configuration {
+    name                          = "${var.student}-${random_id.randomId.hex}"
+    subnet_id                     = "${azurerm_subnet.vpn_hub_client_subnet.id}"
+    private_ip_address_allocation = "Static"
+    private_ip_address            = var.studentIP
+    public_ip_address_id          = azurerm_public_ip.Windows_PublicIP.id
+  }
+}
+
+resource "azurerm_network_interface_security_group_association" "Windows-Nic" {
+  network_interface_id      = azurerm_network_interface.studentIP.id
+  network_security_group_id = azurerm_network_security_group.client-sg.id
+}
+
+resource "cloudflare_record" "cfwindows" {
+  zone_id          = var.cloudflare-zone-id
+  name             = azurerm_virtual_machine.studentwindows.name
+  value            = azurerm_public_ip.Windows_PublicIP.ip_address
+  type             = "A"
+  proxied          = false
+  allow_overwrite  = true
+}

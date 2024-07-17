@@ -1,0 +1,6 @@
+---
+- name: Run commands on Windows host
+  hosts: windows
+  tasks:
+    - name: Run a command on the Windows host
+      win_command: cmd.exe /c echo Hello World > C:\helloworld.txt

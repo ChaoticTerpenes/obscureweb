@@ -1,0 +1,11 @@
+---
+- name: Deploy Juice Shop with Docker (using shell)
+  hosts: atk  # Replace with specific host(s) if needed
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Pull Juice Shop docker image
+      shell: docker pull bkimminich/juice-shop
+
+    - name: Start Juice Shop container (detached mode)
+      shell: docker run -d -p 3000:3000 bkimminich/juice-shop &

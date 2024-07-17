@@ -1,0 +1,11 @@
+---
+- name: Deploy Vulnerable Web Application (DVWA) with Docker (using shell)
+  hosts: atk  # Replace with specific host(s) if needed
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Pull Vulnerable Web Application (DVWA) docker image
+      shell: docker pull vulnerables/web-dvwa
+
+    - name: Start Vulnerable Web Application (DVWA) container (detached mode)
+      shell: docker run -d -p 80:80 vulnerables/web-dvwa &

@@ -1,0 +1,11 @@
+---
+- name: Deploy WebGoat with Docker (using shell)
+  hosts: atk  # Replace with specific host(s) if needed
+  become: true  # Requires root privileges
+
+  tasks:
+    - name: Pull WebGoat docker image
+      shell: docker pull webgoat/webgoat
+
+    - name: Start WebGoat container (detached mode)
+      shell: docker run -d -p 8080:8080 webgoat/webgoat &
