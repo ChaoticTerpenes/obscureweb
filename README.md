@@ -8,7 +8,7 @@
 - Update the .tfvars file. This will be needed for including your Azure IDs, Cloudflare IDs, as well as updating the domain info as necessary
 - use `az login` to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting at the time)
 # Deployment
-## Create SSH Keys (If you don't want to use the old ones)
+## Create SSH Keys
 - Create the SSH keys so you can ssh into the VPN server as the user specified in the .tfvars file or as the ansible user (nopass)
     - `ssh-keygen -f ./ssh_keys/ovpn`
 ## Creating the Hosts
