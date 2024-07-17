@@ -34,7 +34,7 @@
  - Enter a name and click submit
     - `Download` - This will download the requisite `xxx.ovpn` file.
     - `Revoke` - This will revoke VPN access for that user.
-![Basic Auth for VPN Login] (images/vpnserveraccess.png)
+![Basic Auth for VPN Login](images/vpnserveraccess.png)
 # Windows with WSL-Kali-Kex `https://www.kali.org/docs/wsl/win-kex/`
 - Login
     - RDP Access: `<name>#.domain.com`
