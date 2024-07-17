@@ -31,17 +31,18 @@
 - Log into the VPN server
  - `https://vpn.domain.com/index.sh`
  - Use the credentials listed in .tfvars
+![Basic Auth for VPN Login](images/vpnserveraccess.png)
  - Enter a name and click submit
     - `Download` - This will download the requisite `xxx.ovpn` file.
     - `Revoke` - This will revoke VPN access for that user.
-![Basic Auth for VPN Login](images/vpnserveraccess.png)
+![VPN Issue Interface](images/vpnclientdownload.png)
 # Windows with WSL-Kali-Kex `https://www.kali.org/docs/wsl/win-kex/`
 - Login
     - RDP Access: `<name>#.domain.com`
     - Credentials in `.tfvars`
 - Upon login you'll be greeted with a WSL Kali window
 	- In this window run `kex` to launch a VNC window with Kali (Will take about 30 seconds to fully load)
-
+![Student User interface](studentwithkali.png)
 # Issues / Thoughts / To-Dos
 - When the scripts run cloudflare creates a `<name>.domain.com` A record, however the overwrite flag in the terraform code doesn't seem to delete the existing record and just adds a new one.
     - Manually deleting would be a pain, esp if there was 20 records created.
