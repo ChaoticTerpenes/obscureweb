@@ -1,4 +1,4 @@
-# ObscureWeb101
+# ObscureWeb
 - This repository contains terraform deployment scripts for building an environment in Microsoft Azure.
 	- The VPN server can be accessed at `subdomain.domain.com/index.sh` (Depends on what you name it in the .tfvars file)
 		- When specifying a name for the VPN box, make sure to use something unique or there could be IP conflicts.
