@@ -11,7 +11,7 @@ terraform.tfstate.backup
 *.tfstate.*
 *.tfstate.backup
 .terraform.lock.hcl
-*.auto.tfvars
+
 # Module directory
 .terraform/
 ssh_keys/

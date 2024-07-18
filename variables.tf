@@ -115,4 +115,4 @@ variable "studentIP18" {}
 variable "studentIP19" {}
 variable "studentIP20" {}
 variable "ansible_inventory_template" {}
-variable "managed_disk" {}
+variable "student_managed_disk" {}
