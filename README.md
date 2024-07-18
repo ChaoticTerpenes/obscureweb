@@ -7,7 +7,7 @@
 # Prerequisites
 - This repo requires a managed disk for the Windows Hosts and needs to be declared in the .tfvars file
 - Update the .tfvars file. This will be needed for including your Azure IDs, Cloudflare IDs, as well as updating the domain info and passwords as necessary.
-- use `az login` in the terminal to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting at the time)
+- use `az login` in the terminal to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting the variables needed at the time)
 ## Create SSH Keys
 - Create the SSH keys so you can ssh into the VPN server as the user specified in the .tfvars file or as the ansible user.
 	- `ssh-keygen -f ./scripts/linux/ssh_keys/vpn`
