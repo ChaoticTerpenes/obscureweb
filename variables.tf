@@ -35,8 +35,8 @@ variable "server_conf" {}
 variable "client_template" {}
 variable "ssh_public_key_file" {}
 variable "ssh_private_key_file" {}
-variable "windows11_vmsize" {}
-variable "windows11_nic" {}
+variable "windows_vmsize" {}
+variable "windows_nic" {}
 variable "vpn_gateway_subnet" {}
 variable "vpn_client_subnet" {}
 variable "vpn_hub-sg" {}
@@ -114,13 +114,5 @@ variable "studentIP17" {}
 variable "studentIP18" {}
 variable "studentIP19" {}
 variable "studentIP20" {}
-
-
-
-
-
-
-
-
-
-
+variable "ansible_inventory_template" {}
+variable "managed_disk" {}

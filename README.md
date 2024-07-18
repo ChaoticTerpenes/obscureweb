@@ -5,8 +5,9 @@
 	- Windows Hosts will be available for RDP at `<hostname#>.domain.com`
 	- An internal Ubuntu host at `10.1.0.52` will be available to each of those hosts internally
 # Prerequisites
-- This repo requires a managed disk
+- This repo requires a managed disk for the Windows Hosts
 - Update the .tfvars file. This will be needed for including your Azure IDs, Cloudflare IDs, as well as updating the domain info as necessary
+- Will also need to update the windows password in the ansible inventory file
 - use `az login` to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting at the time)
 # Deployment
 ## Create SSH Keys

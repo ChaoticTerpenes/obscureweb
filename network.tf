@@ -5,10 +5,6 @@ resource "azurerm_virtual_network" "vpn_hub_vnet" {
   resource_group_name = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
   address_space       = ["10.0.0.0/8"]
   dns_servers         = ["${var.VPN_DNS1}", "${var.VPN_DNS2}"]
-
-  tags = {
-    environment = "VPN Hub"
-  }
 }
 
 # VPN Hub Gateway subnet 10.1.0.0 - 10.1.0.15

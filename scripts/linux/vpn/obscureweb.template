@@ -5,8 +5,8 @@
 10.1.0.52
 
 [atk:vars]
-ansible_user=obscureatk
-ansible_password=
+ansible_user=${ATKUSERNAME}
+ansible_password=${ATKPASSWORD}
 ansible_python_interpreter=/usr/bin/python3
 
 [windows]
@@ -32,8 +32,8 @@ ansible_python_interpreter=/usr/bin/python3
 10.1.0.220
 
 [windows:vars]
-ansible_user=student
-ansible_password=
+ansible_user=${USERNAME}
+ansible_password=${PASSWORD}
 ansible_connection=winrm
 ansible_port=5985
 ansible_winrm_scheme=http

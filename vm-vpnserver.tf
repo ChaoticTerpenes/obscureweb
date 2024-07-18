@@ -20,6 +20,17 @@ data "template_file" "vpn_server_configuration_file" {
   }
 }
 
+data "template_file" "ansible_inventory_template_file" {
+  template = "${file("${var.ansible_inventory_template}")}"
+
+  vars = {
+    USERNAME    = var.windows_username
+    PASSWORD    = var.windows_password
+    ATKUSERNAME = var.atk_username
+    ATKPASSWORD = var.atk_password
+  }
+}
+
 # Template for shell script ./scripts/client.conf.template
 data "template_file" "vpn_client_template_file" {
   template = "${file("${var.client_template}")}"
@@ -352,7 +363,7 @@ resource "azurerm_virtual_machine" "openvpn" {
     }
   }
 
-  # Render the lient.conf.template template file
+  # Render the client.conf.template template file
   provisioner "file" {
     content     = "${data.template_file.vpn_client_template_file.rendered}"
     destination = "/etc/openvpn/client.conf.template"
@@ -463,6 +474,19 @@ resource "azurerm_virtual_machine" "openvpn" {
   provisioner "file" {
     source      = "./ansible/"
     destination = "/etc/ansible"
+
+    connection {
+      host        = "${azurerm_public_ip.PublicIP.ip_address}"
+      type        = "ssh"
+      user        = "root"
+      private_key = "${file("${var.ssh_private_key_file}")}"
+      timeout     = "5m"
+    }
+  }
+
+  provisioner "file" {
+    content     = "${data.template_file.ansible_inventory_template_file.rendered}"
+    destination = "/etc/ansible/hosts/obscureweb"
 
     connection {
       host        = "${azurerm_public_ip.PublicIP.ip_address}"

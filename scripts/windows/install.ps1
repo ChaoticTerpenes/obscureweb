@@ -71,7 +71,7 @@ Register-ScheduledTask -TaskName 'WSL' -Action `$action -Trigger `$trigger -Sett
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce" -Name "wslinstall" -Value "powershell -noexit -enc QwA6AFwAVwBpAG4AZABvAHcAcwBcAFQAZQBtAHAAXAB3AHMAbABpAG4AcwB0AGEAbABsAC4AcABzADEA" -PropertyType string -Force
 
 Out-File -FilePath C:\Windows\Temp\wslrun.ps1 -Encoding UTF8 -InputObject ("
-iex 'cmd /c start powershell -noexit -Command ''Start-Process powershell.exe -ArgumentList ''''-Exec Bypass'''', ''''-noexit'''', ''''& { while (!(Test-Path -Path ''''''''C:\Windows\Temp\run_complete.txt'''''''')) { Write-Host ''''''''Please wait while Kali loads...''''''''; Start-Sleep -Seconds 10 } ; & kali }'''' -Wait -NoNewWindow'''
+iex 'cmd /c start powershell -noexit -Command ''Start-Process powershell.exe -ArgumentList ''''-Exec Bypass'''', ''''-noexit'''', ''''& { while (!(Test-Path -Path ''''''''C:\Windows\Temp\run_complete.txt'''''''')) { Write-Host ''''''''Please wait while Kali loads...''''''''; Start-Sleep -Seconds 20 } ; & kali }'''' -Wait -NoNewWindow'''
 ")
 
 Shutdown -r -t 15

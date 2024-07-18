@@ -1,7 +1,7 @@
 ---
 - name: Deploy Juice Shop with Docker (using shell)
-  hosts: atk  # Replace with specific host(s) if needed
-  become: true  # Requires root privileges
+  hosts: atk
+  become: true
 
   tasks:
     - name: Pull Juice Shop docker image
