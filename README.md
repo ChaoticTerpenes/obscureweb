@@ -10,7 +10,7 @@
 - use `az login` in the terminal to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting at the time)
 ## Create SSH Keys
 - Create the SSH keys so you can ssh into the VPN server as the user specified in the .tfvars file or as the ansible user
-	- `ssh-keygen -f ./scripts/linux/ssh_keys/ovpn`
+	- `ssh-keygen -f ./scripts/linux/ssh_keys/vpn`
 ## Creating the Hosts
 ### Windows
 - Run the powershell script `./scripts/windows/students.ps1 -count #`
@@ -28,7 +28,7 @@
 - ssh with `ansible@vpn.domain.com`
 - From the home directory choose the vulnerable web app to deploy
 	- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
-# Issuing .ovpn files (If desired)
+# Issuing .vpn files (If desired)
 - Log into the VPN server
 	- `https://vpn.domain.com/index.sh`
 	- Use the credentials you specified in the `.tfvars` file

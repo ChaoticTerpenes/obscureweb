@@ -102,7 +102,7 @@ resource "azurerm_network_security_rule" "openvpn_Port" {
   destination_address_prefix  = "*"
 }
 
-# NOTE: this allows HTTPS access to client ovpn file from Internet vpn-sg
+# NOTE: this allows HTTPS access to client vpn file from Internet vpn-sg
 resource "azurerm_network_security_rule" "vpn_HTTPS" {
   name                        = "HTTPS"
   resource_group_name         = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
@@ -117,7 +117,7 @@ resource "azurerm_network_security_rule" "vpn_HTTPS" {
   destination_address_prefix  = "*"
 }
 
-# NOTE: this allows HTTPS access to client ovpn file from Internet vpn-sg
+# NOTE: this allows HTTPS access to client vpn file from Internet vpn-sg
 resource "azurerm_network_security_rule" "vpn_HTTP" {
   name                        = "HTTP"
   resource_group_name         = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
