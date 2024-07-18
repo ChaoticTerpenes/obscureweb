@@ -42,7 +42,7 @@ data "template_file" "vpn_client_template_file" {
   }
 }
 
-# Template for shell script ./scripts/lighttpd.conf.template
+# Template for shell script ./scripts/linux/vpn/lighttpd.conf.template
 data "template_file" "lighttpd_template_file" {
   template = "${file("${var.lighttpd_template}")}"
 
@@ -53,7 +53,7 @@ data "template_file" "lighttpd_template_file" {
     PASS     = "${var.vpnserver_password}"
   }
 }
-# Template for Easy-Rsa VARS ./scripts/vars.template
+# Template for Easy-Rsa VARS ./scripts/linux/vpn/vars.template
 data "template_file" "vars_template_file" {
   template = "${file("${var.vars_template}")}"
 
@@ -73,7 +73,7 @@ data "template_file" "vars_template_file" {
   }
 }
 
-# Template for shell script ./scripts/lighttpd.conf.template
+# Template for shell script ./scripts/linux/vpn/networking.sh.template
 data "template_file" "networking_template_file" {
   template = "${file("${var.networking_template}")}"
 
@@ -191,7 +191,7 @@ resource "azurerm_virtual_machine" "openvpn" {
 
   # Render the vars file for easy-rsa CA creation
   provisioner "file" {
-    source      = "./scripts/vars"
+    source      = "./scripts/linux/vpn/vars"
     destination = "/tmp/vars"
 
     connection {
@@ -290,7 +290,7 @@ resource "azurerm_virtual_machine" "openvpn" {
 
   # Setup script for lighttpd client website
   provisioner "file" {
-    source      = "./scripts/index.sh"
+    source      = "./scripts/linux/vpn/index.sh"
     destination = "/var/www/html/index.sh"
 
     connection {
@@ -304,7 +304,7 @@ resource "azurerm_virtual_machine" "openvpn" {
 
   # Setup script for lighttpd client website
   provisioner "file" {
-    source      = "./scripts/download.sh"
+    source      = "./scripts/linux/vpn/download.sh"
     destination = "/var/www/html/download.sh"
 
     connection {

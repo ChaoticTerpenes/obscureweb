@@ -9,7 +9,7 @@
 
   # Path to the input file (mandatory)
   [Parameter(Mandatory = $false)]
-  [String] $InputFilePath = '.\scripts\vm-windows-template'
+  [String] $InputFilePath = '.\scripts\windows\vm-windows-template'
 )
 
 for ($i = 1; $i -le $Count; $i++) {

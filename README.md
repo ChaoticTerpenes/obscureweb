@@ -14,10 +14,10 @@
     - `ssh-keygen -f ./ssh_keys/ovpn`
 ## Creating the Hosts
 ### Windows
-- Run the powershell script `./scripts/students.ps1 -count #` (Optional `-name <name> (default=student))`)
+- Run the powershell script `./scripts/windows/students.ps1 -count #` (Optional `-name <name> (default=student))`)
 	- This will create "#" Windows host files in the current directory named `vm-windows-<name>#`
 ### Linux / MacOS
-- Run the bash script `./scripts/students.sh -c <#>`
+- Run the bash script `./scripts/linux/students.sh -c <#>`
 	- I did make some updates and only verified the powershell script. This may have errors properly generating the student in an appropriate format.
 # Deployment
 - Running the below commands will deploy a VPN server, a Windows 11 host(s), and an internal Ubuntu 22.04 box.
