@@ -45,7 +45,7 @@
 	- In this window run `kex` to launch a VNC window with Kali. (Will take about 30 seconds to fully load for the first time)
 ![Student User Interface](images/studentwithkali.png)
 # Issues / Thoughts / To-Dos
-- When the scripts run cloudflare creates a `<name>.domain.com` A record, however the overwrite flag in the terraform code doesn't seem to delete the existing record and just adds a new one.
+- When the scripts run cloudflare creates a `student#.domain.com` A record, however the overwrite flag in the terraform code doesn't seem to delete the existing record and just adds a new one.
 - Manually deleting would be a pain, esp if there was 20 records created.
 - Need a delete CF record script ./delcf sub.domain.com or find another tf way because `allow_overwrite  = true` doesn't work.
 - automatically have the atk box runing the vuln services.
