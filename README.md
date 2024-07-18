@@ -28,7 +28,7 @@
 - ssh with `ansible@vpn.domain.com`
 - From the home directory choose the vulnerable web app to deploy
 	- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
-# Issuing .ovpn files (If necessary)
+# Issuing .ovpn files (If desired)
 - Log into the VPN server
 	- `https://vpn.domain.com/index.sh`
 	- Use the credentials listed in .tfvars

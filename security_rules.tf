@@ -1,25 +1,13 @@
-###            ###
-# Security Rules #
-###            ###
-resource "random_id" "randomId-sg" {
-  keepers = {
-    # Generate a new ID only when a new resource group is defined
-    resource_group = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
-  }
-
-  byte_length = 2
-}
-
 # VPN Server  Network Security Group
 resource "azurerm_network_security_group" "vpn-sg" {
-  name                = "${var.vpn_hub-sg}-${random_id.randomId-sg.hex}"
+  name                = "${var.vpn_hub-sg}-${random_id.randomId.hex}"
   location            = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
   resource_group_name = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
 }
 
-# Windows 11 Desktop Network Security Group
+# Windows Desktop Network Security Group
 resource "azurerm_network_security_group" "client-sg" {
-  name                = "${var.client-sg}-${random_id.randomId-sg.hex}"
+  name                = "${var.client-sg}-${random_id.randomId.hex}"
   location            = "${azurerm_resource_group.vpn_hub_vnet-rg.location}"
   resource_group_name = "${azurerm_resource_group.vpn_hub_vnet-rg.name}"
 }

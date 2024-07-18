@@ -1,17 +1,6 @@
-# ---------------------------------------------------------------------------------------------------------------------
-# DEPLOY A RESOURCE GROUP
-# ---------------------------------------------------------------------------------------------------------------------
-
 resource "azurerm_resource_group" "vpn_hub_vnet-rg" {
-  name     = "${var.prefix-vpn-hub}-${random_string.arbitrary_id.result}-rg"
+  name     = "${var.prefix-vpn-hub}-${random_string.randomId.hex}-rg"
   location = "${var.location}"
-}
-
-resource "random_string" "arbitrary_id" {
-  length  = 4
-  numeric = false
-  special = false
-  upper   = false
 }
 
 provider "cloudflare" {
