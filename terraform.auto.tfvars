@@ -1,16 +1,16 @@
 ########################
 # Cloudflare Variables #
 ########################
-cloudflare-api-key  = ""
-cloudflare-api-user = ""
-cloudflare-zone-id  = ""
-##################
-# Authentication #
-##################
-azure-subscription-id = ""
-azure-client-id       = ""
-azure-client-secret   = ""
-azure-tenant-id       = ""
+cloudflare-api-key  = "" # My Profile - API Tokens - Global API Key
+cloudflare-api-user = "" # This is the email address associated with the CF Account
+cloudflare-zone-id  = "" # My Profile - API Tokens - Create Token 
+###################
+# Azure Variables #
+###################
+azure-subscription-id = "" # This data is displayed in your subscription overivew
+azure-client-id       = "" # This data id displayed in App Registrations overview for the respective app
+azure-client-secret   = "" # This data id displayed in App Registrations - Manage - Certificates & secrets for the respective app
+azure-tenant-id       = "" # This data id displayed in App Registrations overview for the respective app
 student_managed_disk  = "" # Go to your managed disk properties to get the info for this field
 environment           = "obscureweb"
 location              = "eastus"
@@ -27,19 +27,18 @@ ansible-password       = ""
 ##############
 # ObscureVPN #
 ##############
-# az vm image list --publisher Canonical --output table
-obscure-vpn-publisher  = "Canonical"
-obscure-vpn-offer      = "0001-com-ubuntu-server-jammy"
-obscure-vpn-sku        = "22_04-lts-gen2"
-obscure-vpn-version    = "latest"
-
-vpnserver_hostname     = "vpn"
 #Domain is spelt different because the word is taken
 DOUGHMAIN = {
     "VPNSERVER" = "" # Example: vpnserver
     "LOCATION"  = "" # Example: awesomedomain that you own with cloudflare
     "ZONE"      = "com" # Example: .com || .net || .awesome || etc.
 }
+# az vm image list --publisher Canonical --output table
+vpnserver_hostname     = "vpn"
+obscure-vpn-publisher  = "Canonical"
+obscure-vpn-offer      = "0001-com-ubuntu-server-jammy"
+obscure-vpn-sku        = "22_04-lts-gen2"
+obscure-vpn-version    = "latest"
 vpnserver_vmsize       = "Standard_B2ms"
 vpnserver_nic          = "vpn0"
 ansible_inventory_template   = "./scripts/linux/vpn/obscureweb.template"
@@ -59,7 +58,6 @@ VPN_PORT               = "1194"
 VPN_PROTOCOL           = "udp"
 VPN_HUB                = {"SUBNET"="10.1.0.0","CIDR"="24","NETMASK"="255.255.255.0"}
 VPN_CLIENT             = {"SUBNET"="10.8.0.0","CIDR"="24","NETMASK"="255.255.255.0"}
-
 EASYRSA_DN             = "org"
 EASYRSA_REQ_COUNTRY	   = "US"
 EASYRSA_REQ_PROVINCE   = "Virgina"
@@ -72,32 +70,29 @@ EASYRSA_CA_EXPIRE	   = 3650
 EASYRSA_CERT_EXPIRE	   = 1080
 EASYRSA_CRL_DAYS	   = 3650
 EASYRSA_DIGEST		   = "sha512"
-
 ##############
 #    atk     #
 ##############
+atk_hostname       = "obscureatk"
+atk_ip_address     = "10.1.0.52"
 atk-vpn-publisher  = "Canonical"
 atk-vpn-offer      = "0001-com-ubuntu-server-jammy"
 atk-vpn-sku        = "22_04-lts-gen2"
 atk-vpn-version    = "latest"
-atk_hostname       = "obscureatk"
 ubuntu_os_version  = "22.04"
 atk_vmsize         = "Standard_B2ms"
-atk_ip_address     = "10.1.0.52"
-
 ##############
 #  Windows   #
 ##############
 #az vm image list --location eastus --publisher MicrosoftWindowsDesktop --offer Windows-11 --sku win11-22h2-ent --all
+windows_hostname     = "student"
+windows_private_ip   = "10.1.0.132"
 windows-publisher    = "MicrosoftWindowsDesktop"
 windows-offer        = "windows-11"
 windows-sku          = "win11-23h2-ent"
 windows-version      = "22631.3737.240607"
-windows_hostname     = "student1" # Dont think this is used anymore
 windows_vmsize       = "Standard_D2s_v3"
 windows_nic          = "student0"
-windows_private_ip   = "10.1.0.132"
-
 student = "student"
 student1 = "student1"
 student2 = "student2"
