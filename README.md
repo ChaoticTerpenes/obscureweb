@@ -26,7 +26,7 @@
 	- terraform plan
 	- terraform apply --auto-approve
 ## Ubuntu internal web vulnerable apps
-- DVWA, GOAT, and the Juice Shop come preinstalled*
+- DVWA, GOAT, and the Juice Shop come preinstalled, howeever they can also be manually deployed using the commands below.
 	- ssh with `ansible@vpn.domain.com`
 	- From the home directory choose the vulnerable web app to deploy.
 		- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
