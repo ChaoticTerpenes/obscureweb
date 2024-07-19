@@ -512,6 +512,27 @@ resource "azurerm_virtual_machine" "openvpn" {
       timeout     = "5m"
     }
   }
+  # Install Vulnerable web services
+  provisioner "remote-exec" {
+    inline = [
+      "sleep 10",
+      "sudo /home/ansible/deploy-juicy.sh > /dev/null 2>&1",
+      "sleep 20",
+      "sudo /home/ansible/deploy-dvwa.sh > /dev/null 2>&1",
+      "sleep 20",
+      "sudo /home/ansible/deploy-goat.sh > /dev/null 2>&1",
+      "sleep 20",
+    ]
+
+    connection {
+      host        = "${azurerm_public_ip.PublicIP.ip_address}"
+      type        = "ssh"
+      user        = "${var.vpnserver_username}"
+      private_key = "${file("${var.ssh_private_key_file}")}"
+      timeout     = "5m"
+    }
+  }
+  depends_on = [azurerm_virtual_machine.atk-ubuntu]
 }
 
 # VPNSERVER PublicIP

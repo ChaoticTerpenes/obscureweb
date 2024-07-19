@@ -7,7 +7,8 @@
 # Prerequisites
 - This repo requires a managed disk for the Windows Hosts and needs to be declared in the .tfvars file
 - Update the .tfvars file. This will be needed for including your Azure IDs, Cloudflare IDs, as well as updating the domain info and passwords as necessary.
-- use `az login` in the terminal to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting the variables needed at the time)
+	- ![Required .tfvars](images/tfvars-required.png)
+- Before runnign the deployment commands, use `az login` in the terminal to make Azure happy. (Hit a lot of errors without doing this, didn't feel like troubleshooting the variables needed at the time)
 ## Create SSH Keys
 - Create the SSH keys so you can ssh into the VPN server as the user specified in the .tfvars file or as the ansible user.
 	- `ssh-keygen -f ./scripts/linux/ssh_keys/vpn`
@@ -24,10 +25,11 @@
 	- terraform init
 	- terraform plan
 	- terraform apply --auto-approve
-## Deploying the internal web vulnerable apps
-- ssh with `ansible@vpn.domain.com`
-- From the home directory choose the vulnerable web app to deploy.
-	- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
+## Ubuntu internal web vulnerable apps
+- DVWA, GOAT, and the Juice Shop come preinstalled*
+	- ssh with `ansible@vpn.domain.com`
+	- From the home directory choose the vulnerable web app to deploy.
+		- `./deploy-juicy.sh | ./deploy-goat.sh | ./deploy-dvwa.sh`
 # Issuing .vpn files (If desired)
 - Log into the VPN server
 	- `https://vpn.domain.com/index.sh`
